@@ -1,10 +1,10 @@
 import * as React from "react"
-import { inputVariants, type InputVariants } from "../../lib/theme/shadcn-theme"
+import { aidynInputVariants, type AidynInputVariants } from "../../lib/theme/shadcn-theme"
 import { cn } from "../../lib/utils"
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    InputVariants {}
+    AidynInputVariants {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, variant, size, type, ...props }, ref) => {
@@ -14,7 +14,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          inputVariants({ variant: isInvalid ? 'aidyn-error' : variant, size }),
+          aidynInputVariants({ variant: isInvalid ? 'aidyn-danger' : variant, size }),
           className
         )}
         ref={ref}

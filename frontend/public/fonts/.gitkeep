@@ -1,2 +1,9 @@
-# Fonts exportées de GenSpark (.woff2)
-# Aidyn Sans Regular, Aidyn Sans Light, Aidvitneum Medium
+# AIDYN Fonts
+
+Placer ici les polices AIDYN au format WOFF2 :
+
+- aidyn-sans-light.woff2 (font-weight: 300)
+- aidyn-sans-regular.woff2 (font-weight: 400)  
+- aidvitneum-medium.woff2 (font-weight: 500)
+
+Les polices sont déjà configurées dans src/styles/index.css avec fallback sur Inter.

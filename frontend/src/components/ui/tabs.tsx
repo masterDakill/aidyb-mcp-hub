@@ -1,10 +1,9 @@
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 import {
-  tabsListVariants,
-  tabsTriggerVariants,
-  type TabsListVariants,
-  type TabsTriggerVariants
+  aidynTabsListVariants,
+  aidynTabsTriggerVariants,
+  type AidynTabsVariants
 } from "../../lib/theme/shadcn-theme"
 import { cn } from "../../lib/utils"
 
@@ -12,7 +11,7 @@ const Tabs = TabsPrimitive.Root
 
 interface TabsListProps
   extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
-    TabsListVariants {}
+    AidynTabsVariants {}
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -20,7 +19,7 @@ const TabsList = React.forwardRef<
 >(({ className, variant, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn(tabsListVariants({ variant }), className)}
+    className={cn(aidynTabsListVariants({ variant }), className)}
     {...props}
   />
 ))
@@ -28,7 +27,7 @@ TabsList.displayName = TabsPrimitive.List.displayName
 
 interface TabsTriggerProps
   extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>,
-    TabsTriggerVariants {}
+    AidynTabsVariants {}
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
@@ -36,7 +35,7 @@ const TabsTrigger = React.forwardRef<
 >(({ className, variant, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
-    className={cn(tabsTriggerVariants({ variant }), className)}
+    className={cn(aidynTabsTriggerVariants({ variant }), className)}
     {...props}
   />
 ))

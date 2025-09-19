@@ -5,6 +5,7 @@ import { Inbox } from './pages/Inbox'
 import { EmailView } from './pages/EmailView'
 import { Health } from './pages/Health'
 import { Settings } from './pages/Settings'
+import { StyleGuide } from './pages/StyleGuide'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +30,7 @@ function App() {
             <Route path="trash" element={<Inbox />} />
             <Route path="health" element={<Health />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="style-guide" element={<StyleGuide />} />
           </Route>
         </Routes>
       </Router>

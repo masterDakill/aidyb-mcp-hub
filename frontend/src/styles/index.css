@@ -1,16 +1,26 @@
-/* Fonts Aidyn - Exports GenSpark */
+/* 
+  AIDYN Design System - Fonts & Base Styles
+  ===========================================
+  
+  TODO: Replace placeholder fonts with actual AIDYN fonts
+  Place .woff2 files in /public/fonts/ directory:
+  - aidyn-sans-light.woff2 (300)
+  - aidyn-sans-regular.woff2 (400) 
+  - aidvitneum-medium.woff2 (500)
+*/
+
 @font-face {
   font-family: 'Aidyn Sans';
-  src: url('/fonts/aidyn-sans-regular.woff2') format('woff2');
-  font-weight: 400;
+  src: url('/fonts/aidyn-sans-light.woff2') format('woff2');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Aidyn Sans';
-  src: url('/fonts/aidyn-sans-light.woff2') format('woff2');
-  font-weight: 300;
+  src: url('/fonts/aidyn-sans-regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -23,58 +33,112 @@
   font-display: swap;
 }
 
+/* Fallback to Inter if AIDYN fonts aren't available */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Design tokens - Seront remplacés par les valeurs de GenSpark */
-    --aidyn-primary: 210 88% 12%;  /* #0B1220 */
-    --aidyn-accent: 210 40% 98%;   /* Accent clair */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    /* AIDYN Design Tokens - Extracted from official references */
+    /* Primary Colors (AIDYN Cyan) */
+    --aidyn-primary-50: 229 255 255;    /* #e5ffff */
+    --aidyn-primary-100: 204 255 254;   /* #ccfffe */
+    --aidyn-primary-200: 153 255 253;   /* #99fffd */
+    --aidyn-primary-300: 102 255 252;   /* #66fffc */
+    --aidyn-primary-400: 51 255 251;    /* #33fffb */
+    --aidyn-primary-500: 0 229 255;     /* #00e5ff */
+    --aidyn-primary-600: 0 191 243;     /* #00bff3 */
+    --aidyn-primary-700: 0 153 204;     /* #0099cc */
+    --aidyn-primary-800: 0 115 153;     /* #007399 */
+    --aidyn-primary-900: 0 77 102;      /* #004d66 */
+    --aidyn-primary-950: 0 38 51;       /* #002633 */
+
+    /* Secondary Colors (AIDYN Blue) */
+    --aidyn-secondary-50: 229 242 255;  /* #e5f2ff */
+    --aidyn-secondary-100: 204 235 255; /* #ccebff */
+    --aidyn-secondary-200: 153 214 255; /* #99d6ff */
+    --aidyn-secondary-300: 102 194 255; /* #66c2ff */
+    --aidyn-secondary-400: 51 173 255;  /* #33adff */
+    --aidyn-secondary-500: 0 123 255;   /* #007bff */
+    --aidyn-secondary-600: 0 180 255;   /* #00b4ff */
+    --aidyn-secondary-700: 0 86 179;    /* #0056b3 */
+    --aidyn-secondary-800: 0 63 128;    /* #003f80 */
+    --aidyn-secondary-900: 0 40 77;     /* #00284d */
+    --aidyn-secondary-950: 0 17 26;     /* #00111a */
+
+    /* Accent Colors (AIDYN Logo Green) */
+    --aidyn-accent-50: 229 255 245;     /* #e5fff5 */
+    --aidyn-accent-100: 204 255 234;    /* #ccffea */
+    --aidyn-accent-200: 153 255 214;    /* #99ffd6 */
+    --aidyn-accent-300: 102 255 193;    /* #66ffc1 */
+    --aidyn-accent-400: 51 255 173;     /* #33ffad */
+    --aidyn-accent-500: 30 217 139;     /* #1ed98b */
+    --aidyn-accent-600: 0 255 127;      /* #00ff7f */
+    --aidyn-accent-700: 0 204 102;      /* #00cc66 */
+    --aidyn-accent-800: 0 153 77;       /* #00994d */
+    --aidyn-accent-900: 0 102 51;       /* #006633 */
+    --aidyn-accent-950: 0 51 26;        /* #00331a */
+
+    /* Dark Colors (AIDYN Backgrounds) */
+    --aidyn-dark-50: 248 250 252;       /* #f8fafc */
+    --aidyn-dark-100: 241 245 249;      /* #f1f5f9 */
+    --aidyn-dark-200: 226 232 240;      /* #e2e8f0 */
+    --aidyn-dark-300: 203 213 225;      /* #cbd5e1 */
+    --aidyn-dark-400: 148 163 184;      /* #94a3b8 */
+    --aidyn-dark-500: 100 116 139;      /* #64748b */
+    --aidyn-dark-600: 71 85 105;        /* #475569 */
+    --aidyn-dark-700: 51 65 85;         /* #334155 */
+    --aidyn-dark-800: 30 41 59;         /* #1e293b */
+    --aidyn-dark-900: 10 15 37;         /* #0a0f25 */
+    --aidyn-dark-950: 0 8 18;           /* #000812 */
+
+    /* shadcn/ui Theme Variables - Light Mode */
+    --background: 0 0% 100%;                    /* white */
+    --foreground: 0 8 18;                       /* aidyn-dark-950 */
+    --card: 0 0% 100%;                          /* white */
+    --card-foreground: 0 8 18;                 /* aidyn-dark-950 */
+    --popover: 0 0% 100%;                       /* white */
+    --popover-foreground: 0 8 18;              /* aidyn-dark-950 */
+    --primary: 194 100% 50%;                    /* aidyn-primary-500 #00e5ff */
+    --primary-foreground: 0 8 18;              /* aidyn-dark-950 */
+    --secondary: 211 100% 50%;                  /* aidyn-secondary-500 #007bff */
+    --secondary-foreground: 0 0% 98%;          /* white */
+    --muted: 210 40% 98%;                       /* neutral-50 */
+    --muted-foreground: 215 16% 47%;           /* neutral-600 */
+    --accent: 210 40% 96%;                      /* neutral-100 */
+    --accent-foreground: 0 8 18;               /* aidyn-dark-950 */
+    --destructive: 0 100% 64%;                  /* aidyn-danger #ff4b4b */
+    --destructive-foreground: 210 40% 98%;     /* white */
+    --border: 214 32% 91%;                      /* neutral-200 */
+    --input: 214 32% 91%;                       /* neutral-200 */
+    --ring: 194 100% 50%;                       /* aidyn-primary-500 */
+    --radius: 0.75rem;                          /* 12px */
   }
 
   .dark {
-    /* Thème sombre avec couleurs Aidyn */
-    --background: 210 88% 12%;     /* #0B1220 */
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    /* AIDYN Dark Theme */
+    --background: 0 8 18;                       /* aidyn-dark-950 */
+    --foreground: 210 40% 98%;                  /* neutral-50 */
+    --card: 10 15 37;                           /* aidyn-dark-900 */
+    --card-foreground: 210 40% 98%;            /* neutral-50 */
+    --popover: 10 15 37;                        /* aidyn-dark-900 */
+    --popover-foreground: 210 40% 98%;         /* neutral-50 */
+    --primary: 194 100% 50%;                    /* aidyn-primary-500 #00e5ff */
+    --primary-foreground: 0 8 18;              /* aidyn-dark-950 */
+    --secondary: 211 100% 50%;                  /* aidyn-secondary-500 #007bff */
+    --secondary-foreground: 0 8 18;            /* aidyn-dark-950 */
+    --muted: 30 41 59;                          /* aidyn-dark-800 */
+    --muted-foreground: 148 163 184;           /* aidyn-dark-400 */
+    --accent: 30 41 59;                         /* aidyn-dark-800 */
+    --accent-foreground: 210 40% 98%;          /* neutral-50 */
+    --destructive: 0 100% 64%;                  /* aidyn-danger #ff4b4b */
+    --destructive-foreground: 210 40% 98%;     /* neutral-50 */
+    --border: 51 65 85;                         /* aidyn-dark-700 */
+    --input: 51 65 85;                          /* aidyn-dark-700 */
+    --ring: 194 100% 50%;                       /* aidyn-primary-500 */
   }
 }
 
