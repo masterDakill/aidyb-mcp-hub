@@ -1,14 +1,15 @@
 /* 
-  AIDYN Design System - Fonts & Base Styles
-  ===========================================
+  AIDYN Design System - Main Stylesheet
+  =====================================
   
-  TODO: Replace placeholder fonts with actual AIDYN fonts
-  Place .woff2 files in /public/fonts/ directory:
-  - aidyn-sans-light.woff2 (300)
-  - aidyn-sans-regular.woff2 (400) 
-  - aidvitneum-medium.woff2 (500)
+  Fonts, CSS Variables, and Base Styles for AIDYN Technologies
+  Based on visual references and brand guidelines
 */
 
+/* AIDYN Typography - Brand Typefaces */
+/* 
+  TODO: Uncomment when actual AIDYN font files are placed in public/fonts/
+  
 @font-face {
   font-family: 'Aidyn Sans';
   src: url('/fonts/aidyn-sans-light.woff2') format('woff2');
@@ -26,6 +27,22 @@
 }
 
 @font-face {
+  font-family: 'Aidyn Sans';
+  src: url('/fonts/aidyn-sans-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aidyn Sans';
+  src: url('/fonts/aidyn-sans-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Aidvitneum';
   src: url('/fonts/aidvitneum-medium.woff2') format('woff2');
   font-weight: 500;
@@ -33,49 +50,60 @@
   font-display: swap;
 }
 
-/* Fallback to Inter if AIDYN fonts aren't available */
+@font-face {
+  font-family: 'Aidvitneum';
+  src: url('/fonts/aidvitneum-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* Fallback to Inter for development */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* AIDYN Design Tokens - Extracted from official references */
-    /* Primary Colors (AIDYN Cyan) */
+    /* AIDYN Color Palette - Extracted from Visual References */
+    
+    /* Primary Colors (AIDYN Cyan - #00e5ff) */
     --aidyn-primary-50: 229 255 255;    /* #e5ffff */
     --aidyn-primary-100: 204 255 254;   /* #ccfffe */
     --aidyn-primary-200: 153 255 253;   /* #99fffd */
     --aidyn-primary-300: 102 255 252;   /* #66fffc */
     --aidyn-primary-400: 51 255 251;    /* #33fffb */
-    --aidyn-primary-500: 0 229 255;     /* #00e5ff */
+    --aidyn-primary-500: 0 229 255;     /* #00e5ff - Main brand color */
     --aidyn-primary-600: 0 191 243;     /* #00bff3 */
     --aidyn-primary-700: 0 153 204;     /* #0099cc */
     --aidyn-primary-800: 0 115 153;     /* #007399 */
     --aidyn-primary-900: 0 77 102;      /* #004d66 */
     --aidyn-primary-950: 0 38 51;       /* #002633 */
 
-    /* Secondary Colors (AIDYN Blue) */
+    /* Secondary Colors (AIDYN Blue - #007bff) */
     --aidyn-secondary-50: 229 242 255;  /* #e5f2ff */
     --aidyn-secondary-100: 204 235 255; /* #ccebff */
     --aidyn-secondary-200: 153 214 255; /* #99d6ff */
     --aidyn-secondary-300: 102 194 255; /* #66c2ff */
     --aidyn-secondary-400: 51 173 255;  /* #33adff */
-    --aidyn-secondary-500: 0 123 255;   /* #007bff */
+    --aidyn-secondary-500: 0 123 255;   /* #007bff - Logo blue */
     --aidyn-secondary-600: 0 180 255;   /* #00b4ff */
     --aidyn-secondary-700: 0 86 179;    /* #0056b3 */
     --aidyn-secondary-800: 0 63 128;    /* #003f80 */
     --aidyn-secondary-900: 0 40 77;     /* #00284d */
     --aidyn-secondary-950: 0 17 26;     /* #00111a */
 
-    /* Accent Colors (AIDYN Logo Green) */
+    /* Accent Colors (AIDYN Green - #1ed98b) */
     --aidyn-accent-50: 229 255 245;     /* #e5fff5 */
     --aidyn-accent-100: 204 255 234;    /* #ccffea */
     --aidyn-accent-200: 153 255 214;    /* #99ffd6 */
     --aidyn-accent-300: 102 255 193;    /* #66ffc1 */
     --aidyn-accent-400: 51 255 173;     /* #33ffad */
-    --aidyn-accent-500: 30 217 139;     /* #1ed98b */
+    --aidyn-accent-500: 30 217 139;     /* #1ed98b - Logo green */
     --aidyn-accent-600: 0 255 127;      /* #00ff7f */
     --aidyn-accent-700: 0 204 102;      /* #00cc66 */
     --aidyn-accent-800: 0 153 77;       /* #00994d */
@@ -92,53 +120,61 @@
     --aidyn-dark-600: 71 85 105;        /* #475569 */
     --aidyn-dark-700: 51 65 85;         /* #334155 */
     --aidyn-dark-800: 30 41 59;         /* #1e293b */
-    --aidyn-dark-900: 10 15 37;         /* #0a0f25 */
-    --aidyn-dark-950: 0 8 18;           /* #000812 */
+    --aidyn-dark-900: 10 15 37;         /* #0a0f25 - Main dark background */
+    --aidyn-dark-950: 0 8 18;           /* #000812 - Darkest background */
+
+    /* Status Colors */
+    --aidyn-success-500: 50 205 50;     /* #32cd32 */
+    --aidyn-success-600: 0 255 127;     /* #00ff7f */
+    --aidyn-warning-500: 255 165 0;     /* #ffa500 */
+    --aidyn-warning-600: 255 140 0;     /* #ff8c00 */
+    --aidyn-danger-500: 255 75 75;      /* #ff4b4b */
+    --aidyn-danger-600: 232 17 35;      /* #e81123 */
 
     /* shadcn/ui Theme Variables - Light Mode */
-    --background: 0 0% 100%;                    /* white */
-    --foreground: 0 8 18;                       /* aidyn-dark-950 */
-    --card: 0 0% 100%;                          /* white */
-    --card-foreground: 0 8 18;                 /* aidyn-dark-950 */
-    --popover: 0 0% 100%;                       /* white */
-    --popover-foreground: 0 8 18;              /* aidyn-dark-950 */
-    --primary: 194 100% 50%;                    /* aidyn-primary-500 #00e5ff */
-    --primary-foreground: 0 8 18;              /* aidyn-dark-950 */
-    --secondary: 211 100% 50%;                  /* aidyn-secondary-500 #007bff */
-    --secondary-foreground: 0 0% 98%;          /* white */
-    --muted: 210 40% 98%;                       /* neutral-50 */
-    --muted-foreground: 215 16% 47%;           /* neutral-600 */
-    --accent: 210 40% 96%;                      /* neutral-100 */
-    --accent-foreground: 0 8 18;               /* aidyn-dark-950 */
-    --destructive: 0 100% 64%;                  /* aidyn-danger #ff4b4b */
-    --destructive-foreground: 210 40% 98%;     /* white */
-    --border: 214 32% 91%;                      /* neutral-200 */
-    --input: 214 32% 91%;                       /* neutral-200 */
-    --ring: 194 100% 50%;                       /* aidyn-primary-500 */
-    --radius: 0.75rem;                          /* 12px */
+    --background: 0 0% 100%;                    /* White */
+    --foreground: 0 8 18;                       /* AIDYN Dark 950 */
+    --card: 0 0% 100%;                          /* White */
+    --card-foreground: 0 8 18;                 /* AIDYN Dark 950 */
+    --popover: 0 0% 100%;                       /* White */
+    --popover-foreground: 0 8 18;              /* AIDYN Dark 950 */
+    --primary: 194 100% 50%;                    /* AIDYN Primary Cyan */
+    --primary-foreground: 0 8 18;              /* AIDYN Dark 950 */
+    --secondary: 211 100% 50%;                  /* AIDYN Secondary Blue */
+    --secondary-foreground: 0 0% 98%;          /* White */
+    --muted: 210 40% 98%;                       /* Light gray */
+    --muted-foreground: 215 16% 47%;           /* Medium gray */
+    --accent: 151 85% 51%;                      /* AIDYN Accent Green */
+    --accent-foreground: 0 8 18;               /* AIDYN Dark 950 */
+    --destructive: 0 100% 64%;                  /* AIDYN Danger Red */
+    --destructive-foreground: 210 40% 98%;     /* White */
+    --border: 214 32% 91%;                      /* Light border */
+    --input: 214 32% 91%;                       /* Input background */
+    --ring: 194 100% 50%;                       /* AIDYN Primary focus */
+    --radius: 0.75rem;                          /* 12px - AIDYN standard */
   }
 
   .dark {
     /* AIDYN Dark Theme */
-    --background: 0 8 18;                       /* aidyn-dark-950 */
-    --foreground: 210 40% 98%;                  /* neutral-50 */
-    --card: 10 15 37;                           /* aidyn-dark-900 */
-    --card-foreground: 210 40% 98%;            /* neutral-50 */
-    --popover: 10 15 37;                        /* aidyn-dark-900 */
-    --popover-foreground: 210 40% 98%;         /* neutral-50 */
-    --primary: 194 100% 50%;                    /* aidyn-primary-500 #00e5ff */
-    --primary-foreground: 0 8 18;              /* aidyn-dark-950 */
-    --secondary: 211 100% 50%;                  /* aidyn-secondary-500 #007bff */
-    --secondary-foreground: 0 8 18;            /* aidyn-dark-950 */
-    --muted: 30 41 59;                          /* aidyn-dark-800 */
-    --muted-foreground: 148 163 184;           /* aidyn-dark-400 */
-    --accent: 30 41 59;                         /* aidyn-dark-800 */
-    --accent-foreground: 210 40% 98%;          /* neutral-50 */
-    --destructive: 0 100% 64%;                  /* aidyn-danger #ff4b4b */
-    --destructive-foreground: 210 40% 98%;     /* neutral-50 */
-    --border: 51 65 85;                         /* aidyn-dark-700 */
-    --input: 51 65 85;                          /* aidyn-dark-700 */
-    --ring: 194 100% 50%;                       /* aidyn-primary-500 */
+    --background: 0 8 18;                       /* AIDYN Dark 950 */
+    --foreground: 210 40% 98%;                  /* Light text */
+    --card: 10 15 37;                           /* AIDYN Dark 900 */
+    --card-foreground: 210 40% 98%;            /* Light text */
+    --popover: 10 15 37;                        /* AIDYN Dark 900 */
+    --popover-foreground: 210 40% 98%;         /* Light text */
+    --primary: 194 100% 50%;                    /* AIDYN Primary Cyan */
+    --primary-foreground: 0 8 18;              /* AIDYN Dark 950 */
+    --secondary: 211 100% 50%;                  /* AIDYN Secondary Blue */
+    --secondary-foreground: 0 8 18;            /* AIDYN Dark 950 */
+    --muted: 30 41 59;                          /* AIDYN Dark 800 */
+    --muted-foreground: 148 163 184;           /* AIDYN Dark 400 */
+    --accent: 151 85% 51%;                      /* AIDYN Accent Green */
+    --accent-foreground: 0 8 18;               /* AIDYN Dark 950 */
+    --destructive: 0 100% 64%;                  /* AIDYN Danger Red */
+    --destructive-foreground: 210 40% 98%;     /* Light text */
+    --border: 51 65 85;                         /* AIDYN Dark 700 */
+    --input: 51 65 85;                          /* AIDYN Dark 700 */
+    --ring: 194 100% 50%;                       /* AIDYN Primary focus */
   }
 }
 
@@ -147,12 +183,49 @@
     @apply border-border;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
+  
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Aidyn Sans', 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Aidvitneum', 'Aidyn Sans', 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer components {
+  /* AIDYN Glow Effects - Based on interface references */
+  .aidyn-glow-primary {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+  }
+  
+  .aidyn-glow-secondary {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+  }
+  
+  .aidyn-glow-accent {
+    box-shadow: 0 0 20px rgba(30, 217, 139, 0.4);
+  }
+  
+  .aidyn-glow-success {
+    box-shadow: 0 0 15px rgba(50, 205, 50, 0.3);
+  }
+  
+  .aidyn-glow-danger {
+    box-shadow: 0 0 15px rgba(255, 75, 75, 0.3);
+  }
+
+  /* AIDYN Animation Classes */
+  .aidyn-pulse-glow {
+    animation: aidyn-pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .aidyn-fade-in {
+    animation: aidyn-fade-in 0.25s ease-out;
+  }
+
+  /* Email Content Styling (preserve existing) */
   .email-content {
     @apply prose prose-sm dark:prose-invert max-w-none;
   }
@@ -165,6 +238,7 @@
     @apply bg-muted px-1 py-0.5 rounded text-sm;
   }
 
+  /* Navigation Styling (preserve existing) */
   .sidebar-nav {
     @apply flex flex-col space-y-1;
   }
@@ -175,5 +249,65 @@
 
   .sidebar-nav-item[data-active="true"] {
     @apply bg-accent text-accent-foreground;
+  }
+}
+
+@layer utilities {
+  /* AIDYN Brand Color Utilities */
+  .text-aidyn-primary {
+    color: hsl(var(--aidyn-primary-500));
+  }
+  
+  .text-aidyn-secondary {
+    color: hsl(var(--aidyn-secondary-500));
+  }
+  
+  .text-aidyn-accent {
+    color: hsl(var(--aidyn-accent-500));
+  }
+  
+  .bg-aidyn-primary {
+    background-color: hsl(var(--aidyn-primary-500));
+  }
+  
+  .bg-aidyn-secondary {
+    background-color: hsl(var(--aidyn-secondary-500));
+  }
+  
+  .bg-aidyn-accent {
+    background-color: hsl(var(--aidyn-accent-500));
+  }
+  
+  .border-aidyn-primary {
+    border-color: hsl(var(--aidyn-primary-500));
+  }
+  
+  .border-aidyn-secondary {
+    border-color: hsl(var(--aidyn-secondary-500));
+  }
+  
+  .border-aidyn-accent {
+    border-color: hsl(var(--aidyn-accent-500));
+  }
+}
+
+/* AIDYN Keyframe Animations */
+@keyframes aidyn-pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 229, 255, 0.3), 0 0 10px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3), 0 0 30px rgba(0, 229, 255, 0.2);
+  }
+}
+
+@keyframes aidyn-fade-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(4px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
   }
 }

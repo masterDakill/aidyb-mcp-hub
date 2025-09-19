@@ -1,1 +1,27 @@
-# Animations Lottie exportées de GenSpark (.json)
+# AIDYN Lottie Animations Directory
+# ==================================
+#
+# Place AIDYN brand Lottie animation files here:
+#
+# Format: JSON files exported from After Effects with Lottie plugin
+#
+# Recommended animations:
+# - loading-spinner.json       (Loading states with AIDYN colors)
+# - ai-processing.json         (AI analysis animations) 
+# - email-send.json           (Email sending confirmation)
+# - success-checkmark.json    (Success states)
+# - data-sync.json            (Data synchronization)
+# - email-inbox.json          (Inbox interactions)
+#
+# AIDYN animation guidelines:
+# - Use brand colors: cyan (#00e5ff), blue (#007bff), green (#1ed98b)
+# - Smooth, professional transitions
+# - Tech/AI aesthetic consistent with brand
+# - Optimized file sizes (< 100KB per animation)
+#
+# Usage in React with lottie-web:
+# import animationData from '/media/lottie/loading-spinner.json'
+# // Then use with lottie-web or react-lottie-player
+#
+# Alternative usage:
+# <dotlottie-player src="/media/lottie/ai-processing.json" autoplay loop></dotlottie-player>

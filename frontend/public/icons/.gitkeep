@@ -1,14 +1,25 @@
-# AIDYN PWA Icons
-
-Placer ici les icônes PWA au format PNG :
-
-- icon-72x72.png
-- icon-96x96.png  
-- icon-128x128.png
-- icon-144x144.png
-- icon-152x152.png
-- icon-192x192.png
-- icon-384x384.png
-- icon-512x512.png
-
-Les icônes doivent utiliser les couleurs AIDYN et être optimisées pour différents contextes (masquable, any).
+# AIDYN PWA Icons Directory  
+# ==========================
+#
+# Place PWA app icons here following the AIDYN brand guidelines:
+#
+# Required PWA icon sizes:
+# - icon-72x72.png     (Android notification icon)
+# - icon-96x96.png     (Android density-independent pixels)
+# - icon-128x128.png   (Chrome Web Store icon, Android launcher)
+# - icon-144x144.png   (Android launcher icon)
+# - icon-152x152.png   (iOS home screen icon)
+# - icon-192x192.png   (Android launcher icon)
+# - icon-384x384.png   (Android splash screen)
+# - icon-512x512.png   (Android splash screen, high density)
+#
+# Design guidelines:
+# - Use AIDYN logo with proper padding
+# - Background: AIDYN dark (#000812) or transparent
+# - Logo colors: AIDYN cyan (#00e5ff) and blue (#007bff) 
+# - Format: PNG with proper alpha channel
+# - Purpose: maskable any (for adaptive icons)
+#
+# Icons are referenced in:
+# - public/manifest.json (PWA configuration)
+# - Current theme_color: #0B1220 (should match AIDYN dark)

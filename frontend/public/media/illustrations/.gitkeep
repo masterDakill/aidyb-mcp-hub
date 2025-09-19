@@ -1,2 +1,24 @@
-# Illustrations exportées de GenSpark (.webp)
-# Format @1x et @2x pour écrans Retina
+# AIDYN Illustrations Directory
+# =============================
+#
+# Place AIDYN brand illustrations and graphics here:
+#
+# Recommended format: WebP (for optimal loading)
+# Resolution variants: @1x and @2x for retina displays
+#
+# Naming convention:
+# - hero-illustration.webp / hero-illustration@2x.webp
+# - dashboard-graphic.webp / dashboard-graphic@2x.webp  
+# - empty-state.webp / empty-state@2x.webp
+# - ai-processing.webp / ai-processing@2x.webp
+# - email-automation.webp / email-automation@2x.webp
+#
+# AIDYN visual style guidelines:
+# - Primary colors: AIDYN cyan (#00e5ff), blue (#007bff), green (#1ed98b)
+# - Dark backgrounds and gradients
+# - Tech/AI aesthetic with glowing elements
+# - Consistent with interface mockups provided
+#
+# Usage in React:
+# import heroImage from '/media/illustrations/hero-illustration.webp'
+# <img src={heroImage} srcSet="/media/illustrations/hero-illustration@2x.webp 2x" alt="Hero" />

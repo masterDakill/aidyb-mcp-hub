@@ -3,12 +3,12 @@
   "aidyn": {
     "color": {
       "primary": {
-        "50": { "$value": "#e5ffff", "$type": "color" },
+        "50": { "$value": "#e5ffff", "$type": "color", "$description": "AIDYN Cyan - lightest tint" },
         "100": { "$value": "#ccfffe", "$type": "color" },
         "200": { "$value": "#99fffd", "$type": "color" },
         "300": { "$value": "#66fffc", "$type": "color" },
         "400": { "$value": "#33fffb", "$type": "color" },
-        "500": { "$value": "#00e5ff", "$type": "color" },
+        "500": { "$value": "#00e5ff", "$type": "color", "$description": "AIDYN Primary Cyan - extracted from UI references" },
         "600": { "$value": "#00bff3", "$type": "color" },
         "700": { "$value": "#0099cc", "$type": "color" },
         "800": { "$value": "#007399", "$type": "color" },
@@ -16,17 +16,30 @@
         "950": { "$value": "#002633", "$type": "color" }
       },
       "secondary": {
-        "50": { "$value": "#e5f2ff", "$type": "color" },
+        "50": { "$value": "#e5f2ff", "$type": "color", "$description": "AIDYN Blue - lightest tint" },
         "100": { "$value": "#ccebff", "$type": "color" },
         "200": { "$value": "#99d6ff", "$type": "color" },
         "300": { "$value": "#66c2ff", "$type": "color" },
         "400": { "$value": "#33adff", "$type": "color" },
-        "500": { "$value": "#007bff", "$type": "color" },
+        "500": { "$value": "#007bff", "$type": "color", "$description": "AIDYN Secondary Blue - from logo and buttons" },
         "600": { "$value": "#00b4ff", "$type": "color" },
         "700": { "$value": "#0056b3", "$type": "color" },
         "800": { "$value": "#003f80", "$type": "color" },
         "900": { "$value": "#00284d", "$type": "color" },
         "950": { "$value": "#00111a", "$type": "color" }
+      },
+      "accent": {
+        "50": { "$value": "#e5fff5", "$type": "color", "$description": "AIDYN Green - lightest tint" },
+        "100": { "$value": "#ccffea", "$type": "color" },
+        "200": { "$value": "#99ffd6", "$type": "color" },
+        "300": { "$value": "#66ffc1", "$type": "color" },
+        "400": { "$value": "#33ffad", "$type": "color" },
+        "500": { "$value": "#1ed98b", "$type": "color", "$description": "AIDYN Logo Green - exact brand color" },
+        "600": { "$value": "#00ff7f", "$type": "color" },
+        "700": { "$value": "#00cc66", "$type": "color" },
+        "800": { "$value": "#00994d", "$type": "color" },
+        "900": { "$value": "#006633", "$type": "color" },
+        "950": { "$value": "#00331a", "$type": "color" }
       },
       "dark": {
         "50": { "$value": "#f8fafc", "$type": "color" },
@@ -38,32 +51,19 @@
         "600": { "$value": "#475569", "$type": "color" },
         "700": { "$value": "#334155", "$type": "color" },
         "800": { "$value": "#1e293b", "$type": "color" },
-        "900": { "$value": "#0a0f25", "$type": "color" },
-        "950": { "$value": "#000812", "$type": "color" }
-      },
-      "accent": {
-        "50": { "$value": "#e5fff5", "$type": "color" },
-        "100": { "$value": "#ccffea", "$type": "color" },
-        "200": { "$value": "#99ffd6", "$type": "color" },
-        "300": { "$value": "#66ffc1", "$type": "color" },
-        "400": { "$value": "#33ffad", "$type": "color" },
-        "500": { "$value": "#1ed98b", "$type": "color" },
-        "600": { "$value": "#00ff7f", "$type": "color" },
-        "700": { "$value": "#00cc66", "$type": "color" },
-        "800": { "$value": "#00994d", "$type": "color" },
-        "900": { "$value": "#006633", "$type": "color" },
-        "950": { "$value": "#00331a", "$type": "color" }
+        "900": { "$value": "#0a0f25", "$type": "color", "$description": "AIDYN Dark Background - main app theme" },
+        "950": { "$value": "#000812", "$type": "color", "$description": "AIDYN Darkest Background - extracted from interfaces" }
       },
       "success": {
-        "500": { "$value": "#32cd32", "$type": "color" },
+        "500": { "$value": "#32cd32", "$type": "color", "$description": "AIDYN Success Green - status indicator" },
         "600": { "$value": "#00ff7f", "$type": "color" }
       },
       "warning": {
-        "500": { "$value": "#ffa500", "$type": "color" },
+        "500": { "$value": "#ffa500", "$type": "color", "$description": "AIDYN Warning Orange" },
         "600": { "$value": "#ff8c00", "$type": "color" }
       },
       "danger": {
-        "500": { "$value": "#ff4b4b", "$type": "color" },
+        "500": { "$value": "#ff4b4b", "$type": "color", "$description": "AIDYN Error Red - extracted from error states" },
         "600": { "$value": "#e81123", "$type": "color" }
       },
       "neutral": {
@@ -82,9 +82,21 @@
     },
     "typography": {
       "fontFamily": {
-        "primary": { "$value": ["Aidyn Sans", "Inter", "system-ui", "sans-serif"], "$type": "fontFamily" },
-        "secondary": { "$value": ["Aidvitneum", "Inter", "system-ui", "sans-serif"], "$type": "fontFamily" },
-        "mono": { "$value": ["Fira Code", "JetBrains Mono", "monospace"], "$type": "fontFamily" }
+        "primary": { 
+          "$value": ["Aidyn Sans", "Inter", "system-ui", "sans-serif"], 
+          "$type": "fontFamily",
+          "$description": "AIDYN primary typeface - main text and UI"
+        },
+        "display": { 
+          "$value": ["Aidvitneum", "Aidyn Sans", "Inter", "system-ui", "sans-serif"], 
+          "$type": "fontFamily",
+          "$description": "AIDYN display typeface - headings and emphasis"
+        },
+        "mono": { 
+          "$value": ["Fira Code", "JetBrains Mono", "Consolas", "monospace"], 
+          "$type": "fontFamily",
+          "$description": "Monospace font for code and technical content"
+        }
       },
       "fontWeight": {
         "light": { "$value": "300", "$type": "fontWeight" },
@@ -94,15 +106,15 @@
         "bold": { "$value": "700", "$type": "fontWeight" }
       },
       "fontSize": {
-        "xs": { "$value": "0.75rem", "$type": "fontSize" },
-        "sm": { "$value": "0.875rem", "$type": "fontSize" },
-        "base": { "$value": "1rem", "$type": "fontSize" },
-        "lg": { "$value": "1.125rem", "$type": "fontSize" },
-        "xl": { "$value": "1.25rem", "$type": "fontSize" },
-        "2xl": { "$value": "1.5rem", "$type": "fontSize" },
-        "3xl": { "$value": "1.875rem", "$type": "fontSize" },
-        "4xl": { "$value": "2.25rem", "$type": "fontSize" },
-        "5xl": { "$value": "3rem", "$type": "fontSize" }
+        "xs": { "$value": "0.75rem", "$type": "fontSize", "$description": "12px" },
+        "sm": { "$value": "0.875rem", "$type": "fontSize", "$description": "14px" },
+        "base": { "$value": "1rem", "$type": "fontSize", "$description": "16px - base size" },
+        "lg": { "$value": "1.125rem", "$type": "fontSize", "$description": "18px" },
+        "xl": { "$value": "1.25rem", "$type": "fontSize", "$description": "20px" },
+        "2xl": { "$value": "1.5rem", "$type": "fontSize", "$description": "24px" },
+        "3xl": { "$value": "1.875rem", "$type": "fontSize", "$description": "30px" },
+        "4xl": { "$value": "2.25rem", "$type": "fontSize", "$description": "36px" },
+        "5xl": { "$value": "3rem", "$type": "fontSize", "$description": "48px" }
       },
       "lineHeight": {
         "tight": { "$value": "1.25", "$type": "lineHeight" },
@@ -113,56 +125,74 @@
     },
     "spacing": {
       "0": { "$value": "0", "$type": "spacing" },
-      "1": { "$value": "0.25rem", "$type": "spacing" },
-      "2": { "$value": "0.5rem", "$type": "spacing" },
-      "3": { "$value": "0.75rem", "$type": "spacing" },
-      "4": { "$value": "1rem", "$type": "spacing" },
-      "6": { "$value": "1.5rem", "$type": "spacing" },
-      "8": { "$value": "2rem", "$type": "spacing" },
-      "10": { "$value": "2.5rem", "$type": "spacing" },
-      "12": { "$value": "3rem", "$type": "spacing" },
-      "16": { "$value": "4rem", "$type": "spacing" },
-      "20": { "$value": "5rem", "$type": "spacing" },
-      "24": { "$value": "6rem", "$type": "spacing" },
-      "32": { "$value": "8rem", "$type": "spacing" }
+      "1": { "$value": "0.25rem", "$type": "spacing", "$description": "4px" },
+      "2": { "$value": "0.5rem", "$type": "spacing", "$description": "8px" },
+      "3": { "$value": "0.75rem", "$type": "spacing", "$description": "12px" },
+      "4": { "$value": "1rem", "$type": "spacing", "$description": "16px" },
+      "6": { "$value": "1.5rem", "$type": "spacing", "$description": "24px" },
+      "8": { "$value": "2rem", "$type": "spacing", "$description": "32px" },
+      "10": { "$value": "2.5rem", "$type": "spacing", "$description": "40px" },
+      "12": { "$value": "3rem", "$type": "spacing", "$description": "48px" },
+      "16": { "$value": "4rem", "$type": "spacing", "$description": "64px" },
+      "20": { "$value": "5rem", "$type": "spacing", "$description": "80px" },
+      "24": { "$value": "6rem", "$type": "spacing", "$description": "96px" },
+      "32": { "$value": "8rem", "$type": "spacing", "$description": "128px" }
     },
     "borderRadius": {
       "none": { "$value": "0", "$type": "borderRadius" },
-      "sm": { "$value": "0.125rem", "$type": "borderRadius" },
-      "base": { "$value": "0.25rem", "$type": "borderRadius" },
-      "md": { "$value": "0.375rem", "$type": "borderRadius" },
-      "lg": { "$value": "0.5rem", "$type": "borderRadius" },
-      "xl": { "$value": "0.75rem", "$type": "borderRadius" },
-      "2xl": { "$value": "1rem", "$type": "borderRadius" },
-      "3xl": { "$value": "1.5rem", "$type": "borderRadius" },
+      "sm": { "$value": "0.125rem", "$type": "borderRadius", "$description": "2px" },
+      "base": { "$value": "0.25rem", "$type": "borderRadius", "$description": "4px" },
+      "md": { "$value": "0.375rem", "$type": "borderRadius", "$description": "6px" },
+      "lg": { "$value": "0.5rem", "$type": "borderRadius", "$description": "8px - AIDYN standard" },
+      "xl": { "$value": "0.75rem", "$type": "borderRadius", "$description": "12px" },
+      "2xl": { "$value": "1rem", "$type": "borderRadius", "$description": "16px" },
+      "3xl": { "$value": "1.5rem", "$type": "borderRadius", "$description": "24px" },
       "full": { "$value": "9999px", "$type": "borderRadius" }
     },
     "shadow": {
       "soft": { 
         "$value": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)", 
-        "$type": "shadow" 
+        "$type": "shadow",
+        "$description": "Subtle shadow for cards"
       },
       "medium": { 
         "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", 
-        "$type": "shadow" 
+        "$type": "shadow",
+        "$description": "Standard elevation shadow"
       },
       "large": { 
         "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)", 
-        "$type": "shadow" 
+        "$type": "shadow",
+        "$description": "High elevation shadow"
       },
       "glow-primary": { 
-        "$value": "0 0 20px rgba(34, 207, 110, 0.3)", 
-        "$type": "shadow" 
+        "$value": "0 0 20px rgba(0, 229, 255, 0.4)", 
+        "$type": "shadow",
+        "$description": "AIDYN Cyan glow effect - extracted from references"
       },
       "glow-secondary": { 
-        "$value": "0 0 20px rgba(0, 210, 199, 0.3)", 
+        "$value": "0 0 20px rgba(0, 123, 255, 0.4)", 
+        "$type": "shadow",
+        "$description": "AIDYN Blue glow effect"
+      },
+      "glow-accent": { 
+        "$value": "0 0 20px rgba(30, 217, 139, 0.4)", 
+        "$type": "shadow",
+        "$description": "AIDYN Green glow effect"
+      },
+      "glow-success": { 
+        "$value": "0 0 15px rgba(50, 205, 50, 0.3)", 
+        "$type": "shadow" 
+      },
+      "glow-danger": { 
+        "$value": "0 0 15px rgba(255, 75, 75, 0.3)", 
         "$type": "shadow" 
       }
     },
     "timing": {
-      "fast": { "$value": "150ms", "$type": "duration" },
-      "normal": { "$value": "250ms", "$type": "duration" },
-      "slow": { "$value": "350ms", "$type": "duration" },
+      "fast": { "$value": "150ms", "$type": "duration", "$description": "Quick interactions" },
+      "normal": { "$value": "250ms", "$type": "duration", "$description": "Standard transitions" },
+      "slow": { "$value": "350ms", "$type": "duration", "$description": "Complex animations" },
       "ease": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)", "$type": "cubicBezier" },
       "ease-in": { "$value": "cubic-bezier(0.4, 0, 1, 1)", "$type": "cubicBezier" },
       "ease-out": { "$value": "cubic-bezier(0, 0, 0.2, 1)", "$type": "cubicBezier" }

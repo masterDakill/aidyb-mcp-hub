@@ -1,9 +1,19 @@
-# AIDYN Fonts
-
-Placer ici les polices AIDYN au format WOFF2 :
-
-- aidyn-sans-light.woff2 (font-weight: 300)
-- aidyn-sans-regular.woff2 (font-weight: 400)  
-- aidvitneum-medium.woff2 (font-weight: 500)
-
-Les polices sont déjà configurées dans src/styles/index.css avec fallback sur Inter.
+# AIDYN Fonts Directory
+# =====================
+#
+# Place AIDYN brand typeface files here:
+#
+# Required files:
+# - aidyn-sans-light.woff2     (font-weight: 300)
+# - aidyn-sans-regular.woff2   (font-weight: 400) 
+# - aidyn-sans-medium.woff2    (font-weight: 500)
+# - aidyn-sans-semibold.woff2  (font-weight: 600)
+# - aidvitneum-medium.woff2    (font-weight: 500)
+# - aidvitneum-bold.woff2      (font-weight: 700)
+#
+# These fonts are already configured in:
+# - src/styles/index.css (@font-face declarations)
+# - src/lib/theme/tokens.ts (font-family definitions)
+# - tailwind.config.ts (font family extensions)
+#
+# Fallback: Inter font family is used during development

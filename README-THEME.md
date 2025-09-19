@@ -1,258 +1,400 @@
-# AIDYN Design System - Guide d'Intégration
+# AIDYN Design System - Integration Guide
 
-## 📋 Vue d'ensemble
+## 📋 Overview
 
-Ce projet intègre le design system AIDYN dans MCP-Hub. Le système de design est basé sur les tokens extraits des références visuelles fournies et implémente un thème cohérent avec les couleurs, typographies et composants AIDYN.
+Complete AIDYN design system integration for MCP-Hub frontend. This system is built from official AIDYN visual references and provides a comprehensive set of design tokens, components, and assets aligned with AIDYN Technologies brand guidelines.
 
-## 🎨 Couleurs Principales
+## 🎨 AIDYN Color Palette
 
+### Primary Brand Colors
 ```css
-/* Couleurs AIDYN principales */
-Primary (Vert):   #22cf6e   /* Couleur principale de marque */
-Secondary (Cyan): #00d2c7   /* Couleur d'accent */
-Dark (Slate):     #0b1220   /* Couleur sombre principale */
-Success:          #22cf6e   /* États positifs */
-Warning:          #eab308   /* États d'attention */
-Danger:           #ef4444   /* États d'erreur */
+/* AIDYN Primary (Cyan) - Main brand color */
+--aidyn-primary-500: #00e5ff    /* Extracted from UI references */
+
+/* AIDYN Secondary (Blue) - Logo and buttons */  
+--aidyn-secondary-500: #007bff  /* From logo and interface elements */
+
+/* AIDYN Accent (Green) - Logo highlight */
+--aidyn-accent-500: #1ed98b     /* Exact logo green color */
+
+/* AIDYN Dark Backgrounds */
+--aidyn-dark-900: #0a0f25       /* Main dark background */
+--aidyn-dark-950: #000812       /* Darkest background */
 ```
 
-## 📂 Structure des Assets
-
-### Polices AIDYN
-```
-frontend/public/fonts/
-├── aidyn-sans-light.woff2      (300)
-├── aidyn-sans-regular.woff2    (400)
-└── aidvitneum-medium.woff2     (500)
+### Status Colors
+```css
+--aidyn-success: #32cd32         /* Success states */
+--aidyn-warning: #ffa500         /* Warning states */  
+--aidyn-danger: #ff4b4b          /* Error states */
 ```
 
-**⚠️ TODO:** Remplacer les polices placeholder par les vraies polices AIDYN une fois reçues.
+## 📂 Asset Directory Structure
 
-### Icônes PWA
 ```
-frontend/public/icons/
-├── icon-72x72.png
-├── icon-96x96.png
-├── icon-128x128.png
-├── icon-144x144.png
-├── icon-152x152.png
-├── icon-192x192.png
-├── icon-384x384.png
-└── icon-512x512.png
-```
-
-### Médias et Illustrations
-```
-frontend/public/media/
-├── illustrations/          (fichiers WebP @1x/@2x)
-└── lottie/                (animations JSON)
-```
-
-### Design Tokens
-```
-frontend/src/styles/tokens/
-└── design-tokens.json      (tokens standard Design Tokens Community Group)
-
-frontend/src/lib/theme/
-├── tokens.ts              (tokens TypeScript avec validation)
-└── shadcn-theme.ts        (variantes composants shadcn/ui)
-```
-
-## 🚀 Démarrage Rapide
-
-### 1. Installation et Démarrage
-```bash
-# Démarrage avec Docker
-docker compose up --build
-
-# Ou développement local
-cd frontend
-npm install
-npm run dev
+frontend/
+├── public/
+│   ├── fonts/                  # AIDYN brand typefaces
+│   │   ├── aidyn-sans-light.woff2
+│   │   ├── aidyn-sans-regular.woff2
+│   │   ├── aidyn-sans-medium.woff2
+│   │   ├── aidyn-sans-semibold.woff2
+│   │   ├── aidvitneum-medium.woff2
+│   │   └── aidvitneum-bold.woff2
+│   ├── icons/                  # PWA icons (72px to 512px)
+│   │   ├── icon-72x72.png
+│   │   ├── icon-96x96.png
+│   │   ├── icon-128x128.png
+│   │   ├── icon-144x144.png
+│   │   ├── icon-152x152.png
+│   │   ├── icon-192x192.png
+│   │   ├── icon-384x384.png
+│   │   └── icon-512x512.png
+│   └── media/
+│       ├── illustrations/      # WebP images (@1x/@2x)
+│       │   ├── hero-illustration.webp
+│       │   ├── hero-illustration@2x.webp
+│       │   ├── dashboard-graphic.webp
+│       │   └── dashboard-graphic@2x.webp
+│       └── lottie/             # JSON animations
+│           ├── loading-spinner.json
+│           ├── ai-processing.json
+│           └── email-send.json
+└── src/
+    ├── styles/
+    │   ├── tokens/
+    │   │   └── design-tokens.json     # DTCG standard tokens
+    │   └── index.css                  # Main stylesheet
+    └── lib/theme/
+        ├── tokens.ts                  # TypeScript token mappings
+        └── shadcn-theme.ts           # Component variants
 ```
 
-### 2. Accès Style Guide
-Visitez `/style-guide` (en développement) pour voir tous les composants et tester la conformité visuelle.
+## 🧩 Component Usage
 
-### 3. Tests de Conformité
-- [ ] Vérifier les couleurs par rapport aux références AIDYN
-- [ ] Tester le contraste (WCAG AA minimum)
-- [ ] Valider les focus rings sur tous les composants
-- [ ] Tester le mode sombre/clair
-- [ ] Vérifier la responsivité
-
-## 🎯 Variantes Composants AIDYN
-
-### Boutons
+### AIDYN Buttons
 ```tsx
-<Button variant="aidyn-primary">Action Principale</Button>
-<Button variant="aidyn-secondary">Action Secondaire</Button>
-<Button variant="aidyn-outline-primary">Outline</Button>
-<Button variant="aidyn-ghost-primary">Ghost</Button>
+import { Button } from '@/components/ui/button'
+
+// Primary brand button (cyan with glow)
+<Button variant="aidyn-primary">Primary Action</Button>
+
+// Secondary button (blue) 
+<Button variant="aidyn-secondary">Secondary</Button>
+
+// Accent button (green)
+<Button variant="aidyn-accent">Accent Action</Button>
+
+// Outline variants
+<Button variant="aidyn-outline-primary">Outline Primary</Button>
+
+// Ghost variants
+<Button variant="aidyn-ghost-primary">Ghost Primary</Button>
+
+// Link style
+<Button variant="aidyn-link">Link Button</Button>
 ```
 
-### Badges
+### AIDYN Badges
 ```tsx
-<Badge variant="aidyn-primary">Primaire</Badge>
-<Badge variant="aidyn-success">Succès</Badge>
-<Badge variant="aidyn-soft-primary">Soft</Badge>
+import { Badge } from '@/components/ui/badge'
+
+// Status indicators
+<Badge variant="aidyn-success">Active</Badge>
+<Badge variant="aidyn-danger">Error</Badge> 
+<Badge variant="aidyn-warning">Pending</Badge>
+
+// Soft variants (subtle backgrounds)
+<Badge variant="aidyn-soft-primary">Soft Primary</Badge>
+
+// Outline variants
+<Badge variant="aidyn-outline-primary">Outline</Badge>
 ```
 
-### Inputs
+### AIDYN Inputs
 ```tsx
-<Input variant="aidyn-primary" placeholder="Input principal" />
+import { Input } from '@/components/ui/input'
+
+// Default input
+<Input placeholder="Enter text..." />
+
+// AIDYN branded focus states
+<Input variant="aidyn-primary" placeholder="Primary input" />
+<Input variant="aidyn-secondary" placeholder="Secondary input" />
+
+// Error state
 <Input variant="aidyn-danger" aria-invalid={true} />
 ```
 
-### Cards
+### AIDYN Cards  
 ```tsx
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+// Themed cards with gradients
 <Card variant="aidyn-primary" size="lg">
-  Contenu de la card avec thème AIDYN
+  <CardHeader>
+    <CardTitle>AIDYN Primary Card</CardTitle>
+  </CardHeader>
+  <CardContent>Card content with AIDYN styling</CardContent>
 </Card>
+
+// Glass effect card
+<Card variant="aidyn-glass">Glass card with backdrop blur</Card>
+
+// Glowing card
+<Card variant="aidyn-glow">Card with cyan glow effect</Card>
 ```
 
-## 🔧 Personnalisation Avancée
+### AIDYN Tabs
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 
-### Utilisation des Tokens en TypeScript
+<Tabs defaultValue="tab1">
+  <TabsList variant="aidyn-primary">
+    <TabsTrigger variant="aidyn-primary" value="tab1">Tab 1</TabsTrigger>
+    <TabsTrigger variant="aidyn-primary" value="tab2">Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">Content 1</TabsContent>
+  <TabsContent value="tab2">Content 2</TabsContent>
+</Tabs>
+```
+
+## 🔧 Design Token Access
+
+### TypeScript Usage
 ```tsx
 import { colors, typography, spacing } from '@/lib/theme/tokens'
 
 const customStyle = {
-  backgroundColor: colors.primary[500],
+  backgroundColor: colors.primary[500],     // #00e5ff
   fontFamily: typography.fontFamily.primary.join(', '),
-  padding: spacing[4]
+  padding: spacing[4],                      // 1rem
+  borderRadius: borderRadius.lg,            // 0.5rem
 }
 ```
 
-### Classes Tailwind AIDYN
+### CSS Custom Properties
 ```css
-/* Couleurs */
-.bg-aidyn-primary-500
-.text-aidyn-secondary-500
-.border-aidyn-dark-200
-
-/* Ombres */
-.shadow-aidyn-soft
-.shadow-aidyn-glow-primary
-
-/* Animations */
-.animate-pulse-glow
-.transition-aidyn-normal
+.custom-element {
+  background-color: hsl(var(--aidyn-primary-500));
+  color: hsl(var(--aidyn-primary-foreground));
+  border: 1px solid hsl(var(--aidyn-border));
+}
 ```
 
-## 📁 Guide d'Ajout d'Assets
+### Tailwind Classes
+```html
+<!-- AIDYN brand colors -->
+<div class="bg-aidyn-primary-500 text-aidyn-primary-50">
+<div class="border-aidyn-secondary-500 text-aidyn-secondary-500">
 
-### Ajout de Polices AIDYN
-1. Placer les fichiers `.woff2` dans `frontend/public/fonts/`
-2. Mettre à jour les `@font-face` dans `frontend/src/styles/index.css`
-3. Tester avec la page style guide
+<!-- AIDYN shadows and effects -->
+<div class="shadow-aidyn-glow-primary">
+<div class="shadow-aidyn-soft">
 
-### Ajout d'Illustrations
-1. Exporter en WebP (formats @1x et @2x)
-2. Placer dans `frontend/public/media/illustrations/`
-3. Noms descriptifs : `hero-illustration@2x.webp`
+<!-- AIDYN animations -->
+<div class="aidyn-pulse-glow">
+<div class="aidyn-fade-in">
+```
 
-### Ajout d'Animations Lottie
-1. Exporter en JSON depuis After Effects
-2. Placer dans `frontend/public/media/lottie/`
-3. Importer avec `import animationData from '/media/lottie/loading.json'`
+## 🌓 Theme Switching
 
-### Ajout d'Icônes PWA
-1. Générer les tailles requises (72px à 512px)
-2. Format PNG avec fond transparent ou coloré
-3. Placer dans `frontend/public/icons/`
-4. Mettre à jour `manifest.json` si nécessaire
-
-## 🎨 Thèmes et Mode Sombre
-
-### Basculement Automatique
+### Automatic Theme Detection
 ```tsx
 import { applyAidynTheme } from '@/lib/theme/shadcn-theme'
 
-// Application du thème
-applyAidynTheme('dark') // ou 'light'
+// Apply light theme
+applyAidynTheme('light')
+
+// Apply dark theme  
+applyAidynTheme('dark')
+
+// System preference detection
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+applyAidynTheme(prefersDark ? 'dark' : 'light')
 ```
 
-### Variables CSS Custom
-```css
-:root {
-  --aidyn-primary: #22cf6e;
-  --aidyn-secondary: #00d2c7;
-  --aidyn-dark: #0b1220;
-}
-
-.dark {
-  --aidyn-background: var(--aidyn-dark);
-  --aidyn-foreground: #f8fafc;
+### CSS-based Theme Toggle
+```tsx
+// Toggle dark class on document element
+const toggleTheme = () => {
+  document.documentElement.classList.toggle('dark')
 }
 ```
 
-## ✅ Checklist de Contrôle Qualité
+## 📱 PWA Configuration
 
-### Contraste et Accessibilité
-- [ ] Ratios de contraste ≥ 4.5:1 (texte normal)
-- [ ] Ratios de contraste ≥ 3:1 (texte large)
-- [ ] Focus rings visibles sur tous les éléments interactifs
-- [ ] États hover/active/disabled clairement définis
+### Manifest Colors
+The PWA manifest is configured with AIDYN brand colors:
+```json
+{
+  "theme_color": "#000812",        // AIDYN dark background
+  "background_color": "#000000",   // Black
+  "icons": [
+    // Icons should use AIDYN cyan (#00e5ff) and blue (#007bff)
+  ]
+}
+```
 
-### Responsive Design
-- [ ] Breakpoints cohérents (mobile, tablet, desktop)
-- [ ] Textes lisibles sur toutes les tailles
-- [ ] Éléments interactifs accessibles au toucher (44px min)
+## 🎯 Style Guide & Testing
+
+### Development Route
+Visit `/style-guide` in development mode to:
+- Preview complete color palette
+- Test component variants and states  
+- Validate typography hierarchy
+- Compare with AIDYN reference images
+- Toggle between light/dark themes
+
+### Component State Testing
+The style guide includes interactive examples of:
+- Button states (default, hover, active, focus, disabled)
+- Input validation states
+- Badge color variants
+- Card layouts and effects
+- Typography specimens
+
+## 🔄 Asset Integration Workflow
+
+### 1. Adding AIDYN Fonts
+```bash
+# 1. Place .woff2 files in public/fonts/
+cp aidyn-sans-*.woff2 frontend/public/fonts/
+cp aidvitneum-*.woff2 frontend/public/fonts/
+
+# 2. Fonts are already configured in src/styles/index.css
+# 3. Test with style guide: npm run dev → /style-guide
+```
+
+### 2. Adding PWA Icons
+```bash
+# 1. Generate icons in required sizes (72px to 512px)
+# 2. Use AIDYN colors: #00e5ff (cyan), #007bff (blue)  
+# 3. Place in public/icons/
+cp icon-*.png frontend/public/icons/
+
+# 4. Icons are referenced in public/manifest.json
+```
+
+### 3. Adding Illustrations
+```bash
+# 1. Export as WebP format (@1x and @2x)
+# 2. Place in public/media/illustrations/
+cp hero-illustration*.webp frontend/public/media/illustrations/
+
+# 3. Usage in components:
+# <img src="/media/illustrations/hero-illustration.webp" 
+#      srcSet="/media/illustrations/hero-illustration@2x.webp 2x" />
+```
+
+### 4. Adding Lottie Animations  
+```bash
+# 1. Export JSON from After Effects
+# 2. Use AIDYN colors in animations
+# 3. Place in public/media/lottie/
+cp *.json frontend/public/media/lottie/
+
+# 4. Usage with lottie-web or react-lottie-player
+```
+
+## ✅ Quality Assurance Checklist
+
+### Visual Conformity
+- [ ] Colors match AIDYN reference images exactly
+- [ ] Typography uses correct font families and weights
+- [ ] Component spacing follows AIDYN grid system
+- [ ] Glow effects match interface mockups
+- [ ] Dark/light themes are consistent
+
+### Accessibility Standards
+- [ ] Color contrast ratios ≥ 4.5:1 (WCAG AA)
+- [ ] Focus rings visible on all interactive elements
+- [ ] Keyboard navigation works properly
+- [ ] Screen reader compatibility maintained
+- [ ] Touch targets ≥ 44px on mobile
+
+### Technical Validation  
+- [ ] All fonts load without FOUC (Flash of Unstyled Content)
+- [ ] Design tokens validate against DTCG schema
+- [ ] TypeScript types are properly exported
+- [ ] CSS variables work in both themes
+- [ ] PWA manifest validates
 
 ### Performance
-- [ ] Polices avec `font-display: swap`
-- [ ] Images optimisées (WebP, tailles appropriées)
-- [ ] CSS critique inline si nécessaire
+- [ ] Font files use `font-display: swap`
+- [ ] Images are optimized (WebP format)
+- [ ] Lottie animations are < 100KB each
+- [ ] Critical CSS is inlined if needed
+- [ ] No unused CSS in production build
 
-### Conformité AIDYN
-- [ ] Couleurs exactes selon les références
-- [ ] Typographie cohérente
-- [ ] Espacements et rayons conformes
-- [ ] Ombres et effets visuels corrects
+## 🛠️ Development Commands
 
-## 🔄 Workflow de Mise à Jour
+```bash
+# Start development server
+npm run dev
 
-### Mise à Jour des Tokens
-1. Modifier `frontend/src/styles/tokens/design-tokens.json`
-2. Régénérer `frontend/src/lib/theme/tokens.ts`
-3. Mettre à jour `tailwind.config.ts`
-4. Tester avec la page style guide
-5. Valider la conformité visuelle
+# Build for production  
+npm run build
 
-### Ajout de Nouvelles Variantes
-1. Étendre les variantes dans `shadcn-theme.ts`
-2. Ajouter les types TypeScript correspondants
-3. Mettre à jour les composants concernés
-4. Documenter dans le style guide
-5. Ajouter les tests de régression
+# Preview production build
+npm run preview
 
-## 🐛 Dépannage
+# Type checking
+npm run type-check
 
-### Polices Non Chargées
-- Vérifier les chemins dans `/public/fonts/`
-- Contrôler les `@font-face` dans `index.css`
-- Inspecter la console pour les erreurs 404
+# Linting
+npm run lint
 
-### Couleurs Incorrectes
-- Vérifier les variables CSS dans DevTools
-- Contrôler l'import des tokens TypeScript
-- Valider la configuration Tailwind
+# Docker development
+docker compose up --build
+```
 
-### Composants Non Stylés
-- Vérifier les imports des variantes AIDYN
-- Contrôler les props passées aux composants
-- Inspecter les classes CSS générées
+## 🔍 Troubleshooting
 
-## 📞 Support
+### Fonts Not Loading
+```bash
+# 1. Check file paths in public/fonts/
+ls -la frontend/public/fonts/
 
-Pour les questions spécifiques au design system AIDYN :
-1. Consulter la page style guide (`/style-guide`)
-2. Vérifier les tokens dans `frontend/src/lib/theme/`
-3. Comparer avec les références visuelles originales
+# 2. Verify @font-face declarations in src/styles/index.css
+# 3. Check browser network tab for 404 errors
+# 4. Ensure font-display: swap is set
+```
+
+### Colors Incorrect
+```bash  
+# 1. Verify CSS custom properties in DevTools
+# 2. Check design-tokens.json for correct hex values
+# 3. Validate Tailwind config imports tokens correctly
+# 4. Compare with AIDYN reference images
+```
+
+### Components Not Styled
+```bash
+# 1. Check component imports use AIDYN variants
+# 2. Verify shadcn-theme.ts exports are correct  
+# 3. Ensure Tailwind includes all AIDYN classes
+# 4. Test component props in style guide
+```
+
+## 📞 Support & Documentation
+
+### Key Files Reference
+- `src/styles/tokens/design-tokens.json` - Source of truth for all design tokens
+- `src/lib/theme/tokens.ts` - TypeScript token definitions and utilities  
+- `src/lib/theme/shadcn-theme.ts` - Component variant definitions
+- `src/styles/index.css` - CSS custom properties and base styles
+- `tailwind.config.ts` - Tailwind configuration with AIDYN extensions
+
+### External Resources
+- [Design Tokens Community Group](https://tr.designtokens.org/format/) - Token format specification
+- [shadcn/ui Documentation](https://ui.shadcn.com/) - Base component library
+- [Tailwind CSS](https://tailwindcss.com/) - Utility framework documentation
 
 ---
 
-**Version:** 1.0.0
-**Dernière mise à jour:** $(date +%Y-%m-%d)
-**Compatibilité:** React 18+, TypeScript 5+, Tailwind 3+
+**Version**: 1.0.0  
+**Last Updated**: September 2024  
+**Compatibility**: React 18+, TypeScript 5+, Tailwind 3+, Vite 5+
+
+**🎨 AIDYN Design System is ready for production use**
