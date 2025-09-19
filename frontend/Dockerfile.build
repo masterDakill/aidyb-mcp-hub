@@ -1,0 +1,21 @@
+# Dockerfile pour build du frontend seulement
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copier les fichiers de configuration
+COPY package*.json ./
+
+# Installer les dépendances en supprimant le cache problématique
+RUN rm -rf node_modules package-lock.json && \
+    npm cache clean --force && \
+    npm install
+
+# Copier le code source
+COPY . .
+
+# Build l'application
+RUN npm run build
+
+# Le résultat est dans /app/dist et sera monté par volume
+CMD ["sh", "-c", "echo 'Frontend build completed successfully' && sleep 5"]

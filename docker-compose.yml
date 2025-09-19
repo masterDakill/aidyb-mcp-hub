@@ -1,0 +1,128 @@
+version: "3.9"
+
+networks:
+  mcphub-network:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: mcphub-postgres
+    environment:
+      - POSTGRES_DB=mcphub
+      - POSTGRES_USER=mcphub_user
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - mcphub-postgres-data:/var/lib/postgresql/data
+    networks:
+      - mcphub-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mcphub_user -d mcphub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mail-parser:
+    build:
+      context: ./mail-parser
+      dockerfile: Dockerfile
+    container_name: mcphub-mail-parser
+    environment:
+      - MAIL_PARSER_DATABASE_URL=postgresql://mcphub_user:${POSTGRES_PASSWORD}@postgres:5432/mcphub
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    networks:
+      - mcphub-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  mail-fetcher:
+    build:
+      context: ./mail-fetcher
+      dockerfile: Dockerfile
+    container_name: mcphub-mail-fetcher
+    environment:
+      - EMAIL_PROVIDER=${EMAIL_PROVIDER}
+      - IMAP_HOST=${IMAP_HOST}
+      - IMAP_PORT=${IMAP_PORT}
+      - IMAP_SSL=${IMAP_SSL}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - MAILBOX=${MAILBOX:-INBOX}
+      - FETCH_SINCE_DAYS=${FETCH_SINCE_DAYS:-3}
+      - MARK_AS_SEEN=${MARK_AS_SEEN:-true}
+      - POLL_INTERVAL_SECONDS=${POLL_INTERVAL_SECONDS:-300}
+      - MAIL_PARSER_URL=${MAIL_PARSER_URL:-http://mail-parser:8000}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    networks:
+      - mcphub-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mail-parser:
+        condition: service_healthy
+    restart: unless-stopped
+
+  metamcp:
+    image: ghcr.io/metatool-ai/metamcp:2.4.13
+    container_name: mcphub-metamcp
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://mcphub_user:${POSTGRES_PASSWORD}@postgres:5432/mcphub
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - APP_URL=http://localhost:3001
+    volumes:
+      - mcphub-metamcp-data:/data
+    networks:
+      - mcphub-network
+    ports:
+      - "12008:12008"
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend avec Nginx intégré (approche multi-stage)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mcphub-frontend
+    environment:
+      - VITE_API_BASE=http://localhost
+      - VITE_MAIL_PARSER_URL=http://localhost/api
+      - VITE_METAMCP_HEALTH=http://localhost:3001/health
+      - VITE_USE_MOCK=false
+    ports:
+      - "80:80"
+    networks:
+      - mcphub-network
+    depends_on:
+      mail-parser:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mcphub-metamcp-data:
+    name: mcphub-metamcp-data
+  mcphub-postgres-data:
+    name: mcphub-postgres-data
