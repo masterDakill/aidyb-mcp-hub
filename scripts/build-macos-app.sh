@@ -110,6 +110,7 @@ if [ -f "$ICON_SOURCE" ]; then
     mkdir -p "$ICONSET_DIR"
 
     # Generate all required icon sizes
+    echo "  Generating icon sizes..."
     sips -z 16 16 "$ICON_SOURCE" --out "$ICONSET_DIR/icon_16x16.png" >/dev/null 2>&1
     sips -z 32 32 "$ICON_SOURCE" --out "$ICONSET_DIR/icon_16x16@2x.png" >/dev/null 2>&1
     sips -z 32 32 "$ICON_SOURCE" --out "$ICONSET_DIR/icon_32x32.png" >/dev/null 2>&1
@@ -121,11 +122,20 @@ if [ -f "$ICON_SOURCE" ]; then
     sips -z 512 512 "$ICON_SOURCE" --out "$ICONSET_DIR/icon_512x512.png" >/dev/null 2>&1
     cp "$ICON_SOURCE" "$ICONSET_DIR/icon_512x512@2x.png"
 
-    # Convert to icns
-    iconutil -c icns "$ICONSET_DIR" -o "$APP_DIR/Contents/Resources/app.icns"
-    rm -rf "$ICONSET_DIR"
-
-    echo "✅ Icon created successfully"
+    # Convert to icns with error handling
+    echo "  Converting to ICNS format..."
+    if iconutil -c icns "$ICONSET_DIR" -o "$APP_DIR/Contents/Resources/app.icns" 2>/dev/null; then
+        rm -rf "$ICONSET_DIR"
+        echo "✅ Icon created successfully"
+    else
+        echo "⚠️ Failed to create ICNS, using fallback method..."
+        # Fallback: just copy the source PNG as app.png
+        cp "$ICON_SOURCE" "$APP_DIR/Contents/Resources/app.png"
+        rm -rf "$ICONSET_DIR"
+        # Update Info.plist to use PNG instead
+        sed -i '' 's/app.icns/app.png/' "$APP_DIR/Contents/Info.plist"
+        echo "✅ Icon created (PNG fallback)"
+    fi
 else
     echo "⚠️ Icon source not found at $ICON_SOURCE, using default icon"
 fi
