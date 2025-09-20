@@ -78,15 +78,15 @@ export function Health() {
 
   const getStatusBadge = (service: ServiceHealth) => {
     if (service.loading) {
-      return <Badge variant="secondary">Vérification...</Badge>
+      return <Badge variant="aidyn-secondary">Vérification...</Badge>
     }
     if (service.error) {
-      return <Badge variant="destructive">Erreur</Badge>
+      return <Badge variant="aidyn-danger">Erreur</Badge>
     }
     if (service.status?.ok) {
       return <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">En ligne</Badge>
     }
-    return <Badge variant="secondary">Hors ligne</Badge>
+    return <Badge variant="aidyn-secondary">Hors ligne</Badge>
   }
 
   const overallStatus = services.every(s => s.status?.ok && !s.error)
@@ -107,7 +107,7 @@ export function Health() {
         <Button
           onClick={checkAllHealth}
           disabled={isLoading}
-          variant="outline"
+          variant="aidyn-outline-primary"
         >
           <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
           Actualiser
@@ -185,7 +185,7 @@ export function Health() {
               )}
 
               <Button
-                variant="outline"
+                variant="aidyn-outline-primary"
                 size="sm"
                 onClick={() => checkHealth(service.name)}
                 disabled={service.loading}

@@ -150,9 +150,9 @@ export function Settings() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline">{account.provider}</Badge>
+                  <Badge variant="aidyn-outline-primary">{account.provider}</Badge>
                   <Badge
-                    variant={account.active ? "default" : "secondary"}
+                    variant={account.active ? "aidyn-primary" : "aidyn-secondary"}
                     className={account.active
                       ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
                       : ""
@@ -160,14 +160,14 @@ export function Settings() {
                   >
                     {account.active ? 'Actif' : 'Inactif'}
                   </Badge>
-                  <Button variant="outline" size="sm">
+                  <Button variant="aidyn-outline-primary" size="sm">
                     Configurer
                   </Button>
                 </div>
               </div>
             ))}
 
-            <Button variant="outline" className="w-full">
+            <Button variant="aidyn-outline-primary" className="w-full">
               <Mail className="h-4 w-4 mr-2" />
               Ajouter un compte
             </Button>
@@ -182,7 +182,7 @@ export function Settings() {
             <Eye className="h-5 w-5" />
             Variables d'environnement
             <Button
-              variant="ghost"
+              variant="aidyn-ghost-primary"
               size="sm"
               onClick={() => setShowPasswords(!showPasswords)}
             >

@@ -60,7 +60,7 @@ export function Inbox() {
             </p>
           </div>
           <Button
-            variant="outline"
+            variant="aidyn-outline-primary"
             size="sm"
             onClick={handleRefresh}
             disabled={loading}
@@ -84,7 +84,7 @@ export function Inbox() {
         {/* Filters */}
         <div className="flex flex-wrap gap-2">
           <Button
-            variant={filters.category === 'facture' ? 'default' : 'outline'}
+            variant={filters.category === 'facture' ? 'aidyn-primary' : 'aidyn-outline-primary'}
             size="sm"
             onClick={() => handleCategoryFilter('facture')}
           >
@@ -92,7 +92,7 @@ export function Inbox() {
             Factures
           </Button>
           <Button
-            variant={filters.category === 'support' ? 'default' : 'outline'}
+            variant={filters.category === 'support' ? 'aidyn-primary' : 'aidyn-outline-primary'}
             size="sm"
             onClick={() => handleCategoryFilter('support')}
           >
@@ -100,7 +100,7 @@ export function Inbox() {
             Support
           </Button>
           <Button
-            variant={filters.category === 'commercial' ? 'default' : 'outline'}
+            variant={filters.category === 'commercial' ? 'aidyn-primary' : 'aidyn-outline-primary'}
             size="sm"
             onClick={() => handleCategoryFilter('commercial')}
           >
@@ -108,7 +108,7 @@ export function Inbox() {
             Commercial
           </Button>
           <Button
-            variant={filters.sentiment === 'urgent' ? 'default' : 'outline'}
+            variant={filters.sentiment === 'urgent' ? 'aidyn-primary' : 'aidyn-outline-primary'}
             size="sm"
             onClick={() => handleSentimentFilter('urgent')}
           >
@@ -123,7 +123,7 @@ export function Inbox() {
         {error && (
           <div className="p-4 text-center text-red-600">
             <p>Erreur: {error}</p>
-            <Button variant="outline" size="sm" onClick={handleRefresh} className="mt-2">
+            <Button variant="aidyn-outline-primary" size="sm" onClick={handleRefresh} className="mt-2">
               Réessayer
             </Button>
           </div>

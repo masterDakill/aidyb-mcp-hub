@@ -46,7 +46,7 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
                   {formatDate(email.received_at)}
                 </span>
                 {!email.processed && (
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="aidyn-outline-primary" className="text-xs">
                     Non traité
                   </Badge>
                 )}
@@ -61,7 +61,7 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
               <div className="flex items-center gap-2 mb-2">
                 {email.analysis?.category && (
                   <Badge
-                    variant="secondary"
+                    variant="aidyn-secondary"
                     className={`text-xs ${getCategoryColor(email.analysis.category)}`}
                   >
                     {email.analysis.category}
@@ -69,14 +69,14 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
                 )}
                 {email.analysis?.sentiment && (
                   <Badge
-                    variant="secondary"
+                    variant="aidyn-secondary"
                     className={`text-xs ${getSentimentColor(email.analysis.sentiment)}`}
                   >
                     {email.analysis.sentiment}
                   </Badge>
                 )}
                 {email.analysis?.score && (
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="aidyn-outline-primary" className="text-xs">
                     Score: {Math.round(email.analysis.score * 100)}%
                   </Badge>
                 )}
@@ -91,7 +91,7 @@ export function EmailList({ emails, selectedId, onSelect }: EmailListProps) {
             </div>
 
             {/* Provider badge */}
-            <Badge variant="outline" className="text-xs flex-shrink-0">
+            <Badge variant="aidyn-outline-primary" className="text-xs flex-shrink-0">
               {email.provider}
             </Badge>
           </div>

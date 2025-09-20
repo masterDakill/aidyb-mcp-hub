@@ -54,7 +54,7 @@ export function EmailView() {
       <div className="border-b bg-background p-4">
         <div className="flex items-center justify-between mb-4">
           <Button
-            variant="ghost"
+            variant="aidyn-ghost-primary"
             size="sm"
             onClick={() => navigate('/')}
             className="mr-4"
@@ -64,11 +64,11 @@ export function EmailView() {
           </Button>
 
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">
+            <Button variant="aidyn-outline-primary" size="sm">
               <Archive className="h-4 w-4 mr-2" />
               Archiver
             </Button>
-            <Button variant="outline" size="sm">
+            <Button variant="aidyn-outline-primary" size="sm">
               <Trash className="h-4 w-4 mr-2" />
               Supprimer
             </Button>
@@ -88,7 +88,7 @@ export function EmailView() {
               <Calendar className="h-4 w-4" />
               <span>{formatDate(selectedEmail.received_at)}</span>
             </div>
-            <Badge variant="outline">{selectedEmail.provider}</Badge>
+            <Badge variant="aidyn-outline-primary">{selectedEmail.provider}</Badge>
           </div>
 
           {/* Analysis badges */}
@@ -96,7 +96,7 @@ export function EmailView() {
             <div className="flex items-center gap-2">
               {selectedEmail.analysis.category && (
                 <Badge
-                  variant="secondary"
+                  variant="aidyn-secondary"
                   className={getCategoryColor(selectedEmail.analysis.category)}
                 >
                   <Tag className="h-3 w-3 mr-1" />
@@ -105,7 +105,7 @@ export function EmailView() {
               )}
               {selectedEmail.analysis.sentiment && (
                 <Badge
-                  variant="secondary"
+                  variant="aidyn-secondary"
                   className={getSentimentColor(selectedEmail.analysis.sentiment)}
                 >
                   <TrendingUp className="h-3 w-3 mr-1" />
@@ -113,7 +113,7 @@ export function EmailView() {
                 </Badge>
               )}
               {selectedEmail.analysis.score && (
-                <Badge variant="outline">
+                <Badge variant="aidyn-outline-primary">
                   Score: {Math.round(selectedEmail.analysis.score * 100)}%
                 </Badge>
               )}
@@ -171,7 +171,7 @@ export function EmailView() {
                         {attachment.mime_type} • {Math.round(attachment.size_bytes / 1024)} KB
                       </p>
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="aidyn-outline-primary" size="sm">
                       Télécharger
                     </Button>
                   </div>

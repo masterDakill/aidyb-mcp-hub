@@ -193,7 +193,7 @@ export type TimingKey = keyof typeof timing;
 export type ThemeVariant = keyof typeof themeVariants;
 
 // Utility functions
-export const getColor = (color: ColorKey, variant: ColorVariant = '500') => {
+export const getColor = (color: ColorKey, variant: ColorVariant = 500) => {
   return colors[color][variant as keyof typeof colors[ColorKey]];
 };
 

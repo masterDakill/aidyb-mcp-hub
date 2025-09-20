@@ -4,7 +4,7 @@ import { Badge } from '../components/ui/badge'
 import { Input } from '../components/ui/input'
 import { Card } from '../components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
-import { colors, typography, spacing, borderRadius, shadows } from '../lib/theme/tokens'
+import { colors, typography, borderRadius } from '../lib/theme/tokens'
 
 /**
  * Style Guide Page - AIDYN Design System

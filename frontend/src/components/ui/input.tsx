@@ -3,7 +3,7 @@ import { aidynInputVariants, type AidynInputVariants } from "../../lib/theme/sha
 import { cn } from "../../lib/utils"
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
     AidynInputVariants {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(

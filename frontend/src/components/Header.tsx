@@ -14,7 +14,7 @@ export function Header({ onMenuClick }: HeaderProps) {
     <header className="border-b bg-background px-4 lg:px-6 h-14 flex items-center justify-between">
       <div className="flex items-center gap-4">
         <Button
-          variant="ghost"
+          variant="aidyn-ghost-primary"
           size="sm"
           className="lg:hidden"
           onClick={onMenuClick}
@@ -24,7 +24,7 @@ export function Header({ onMenuClick }: HeaderProps) {
 
         <div className="flex items-center gap-2">
           <h1 className="text-xl font-semibold">MCP-Hub</h1>
-          <Badge variant="secondary" className="text-xs">
+          <Badge variant="aidyn-secondary" className="text-xs">
             Email Manager
           </Badge>
         </div>
@@ -43,15 +43,15 @@ export function Header({ onMenuClick }: HeaderProps) {
           </div>
         )}
 
-        <Button variant="ghost" size="sm">
+        <Button variant="aidyn-ghost-primary" size="sm">
           <Activity className="h-4 w-4" />
         </Button>
 
-        <Button variant="ghost" size="sm">
+        <Button variant="aidyn-ghost-primary" size="sm">
           <Bell className="h-4 w-4" />
         </Button>
 
-        <Button variant="ghost" size="sm">
+        <Button variant="aidyn-ghost-primary" size="sm">
           <Settings className="h-4 w-4" />
         </Button>
       </div>

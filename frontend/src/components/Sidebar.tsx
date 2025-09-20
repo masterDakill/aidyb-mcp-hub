@@ -58,7 +58,7 @@ export function Sidebar({ open, onOpenChange }: SidebarProps) {
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="font-semibold text-lg">Navigation</h2>
             <Button
-              variant="ghost"
+              variant="aidyn-ghost-primary"
               size="sm"
               className="lg:hidden"
               onClick={() => onOpenChange(false)}
@@ -93,7 +93,7 @@ export function Sidebar({ open, onOpenChange }: SidebarProps) {
                   <item.icon className="h-4 w-4" />
                   <span className="flex-1">{item.name}</span>
                   {item.name === 'Boîte de réception' && stats && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="aidyn-secondary" className="text-xs">
                       {stats.total_emails}
                     </Badge>
                   )}
